@@ -1,10 +1,18 @@
 defmodule ContactsManager.Contact do
   use ContactsManager.Web, :model
 
+  @derive {Poison.Encoder, except: [:__meta__, :inserted_at, :updated_at]}
+
   schema "contacts" do
     field :first_name, :string
     field :last_name, :string
     field :gender, :integer
+    field :birth_date, Ecto.Date
+    field :location, :string
+    field :phone_number, :string
+    field :email, :string
+    field :headline, :string
+    field :picture, :string
 
     timestamps()
   end
@@ -14,7 +22,7 @@ defmodule ContactsManager.Contact do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:first_name, :last_name, :gender])
-    |> validate_required([:first_name, :last_name, :gender])
+    |> cast(params, [:first_name, :last_name, :gender, :birth_date, :location, :phone_number, :email, :headline, :picture])
+    |> validate_required([:first_name, :last_name, :gender, :birth_date, :location, :phone_number, :email, :headline, :picture])
   end
 end

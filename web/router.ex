@@ -13,14 +13,16 @@ defmodule ContactsManager.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", ContactsManager do
-    pipe_through :browser # Use the default browser stack
+  # scope "/", ContactsManager do
+  #   pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-  end
+  #   get "/", PageController, :index
+  # end
 
   # Other scopes may use custom stacks.
-  # scope "/api", ContactsManager do
-  #   pipe_through :api
-  # end
+  scope "/api", ContactsManager do
+    pipe_through :api
+
+    resources "/contacts", ContactsController, only: [:index]
+  end
 end

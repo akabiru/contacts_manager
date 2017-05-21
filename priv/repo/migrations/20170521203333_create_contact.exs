@@ -3,13 +3,13 @@ defmodule ContactsManager.Repo.Migrations.CreateContact do
 
   def change do
     create table(:contacts) do
-      add :first_name, :string, null: false
-      add :last_name, :string, null: false
-      add :gender, :integer, default: 0
-      add :birth_date, :date, null: false
-      add :location, :string, null: false
+      add :first_name, :string
+      add :last_name, :string
+      add :gender, :integer
+      add :birth_date, :date
+      add :location, :string
       add :phone_number, :string
-      add :email, :string, null: false
+      add :email, :string
       add :headline, :text
       add :picture, :string
 
